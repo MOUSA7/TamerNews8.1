@@ -37,6 +37,22 @@ Route::prefix('admin/posts')->middleware(['auth','can:posts'])->name('admin.post
     Route::get('/control',[\App\Http\Controllers\PostController::class,'control'])->name('control');
 
 });
+
+Route::resource('admin/comments',\App\Http\Controllers\CommentController::class,['names'=>[
+    'index'=>'admin.comments.index',
+    'create'=>'admin.comments.create',
+    'edit'=>'admin.comments.edit',
+    Route::post('admin/comments/store/{post}',[\App\Http\Controllers\CommentController::class,'store'])->name('admin.comments.store')
+]]);
+
+Route::resource('admin/comments/replies',\App\Http\Controllers\ReplayController::class,['names'=>[
+    'index'=>'admin.replies.index',
+    'create'=>'admin.replies.create',
+    'edit'=>'admin.replies.edit',
+    Route::post('admin/replies/store/{comment}',[\App\Http\Controllers\ReplayController::class,'store'])->name('admin.replies.store')
+
+]]);
+
 Route::resource('admin/users',\App\Http\Controllers\UserController::class,['names'=>[
     'index'=>'admin.users.index',
     'create'=>'admin.users.create',
@@ -65,13 +81,16 @@ Route::prefix('admin/categories')->middleware(['auth'])->name('admin.categories.
 
 });
 
-Route::prefix('admin/settings')->middleware(['auth'])->name('admin.setting.')->group(function (){
+
+
+Route::prefix('admin/settings')->middleware(['auth','can:information'])->name('admin.setting.')->group(function (){
     Route::get('/',[\App\Http\Controllers\SettingController::class,'index'])->name('index');
     Route::get('create',[\App\Http\Controllers\SettingController::class,'create'])->name('create');
     Route::post('create',[\App\Http\Controllers\SettingController::class,'store'])->name('store');
     Route::get('edit/{id}',[\App\Http\Controllers\SettingController::class,'edit'])->name('edit');
     Route::put('edit/{id}',[\App\Http\Controllers\SettingController::class,'update'])->name('update');
 });
+
 
 Route::prefix('/')->name('home.')->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('index');

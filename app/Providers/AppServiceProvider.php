@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.input','input');
         Blade::include('components.select','select');
         Blade::include('components.search','search');
-        View::composer(['*'],ViewComposer::class);
+        View::composer(['frontend.index','frontend.master','frontend._layouts'],ViewComposer::class);
 
 
 //

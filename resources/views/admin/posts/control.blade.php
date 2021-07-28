@@ -38,6 +38,7 @@
                 <td>{{Str::limit($post->title,30)}}</td>
                 <td>{{$post->user ? $post->user->name : 'No User'}}</td>
                 <td>{{$post->user->role ? $post->user->role->name :'Nothing'}}</td>
+                <td>{{$post->created_at->diffForHumans()}}</td>
                 <td>
                     @if($post->status == 0)
                     <x-form :action="route('admin.posts.approve',$post->id)">

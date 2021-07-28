@@ -163,6 +163,13 @@
                                     <p>Archive</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('admin.comments.index')}}" class="nav-link">
+                                    <i class="far fa-newspaper nav-icon"></i>
+                                    <p>عرض التعليقات</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">

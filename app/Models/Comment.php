@@ -14,4 +14,16 @@ class Comment extends Model
     public function commentable(){
         return $this->morphTo();
     }
+
+    public function replays(){
+        return $this->hasMany(Replay::class);
+    }
+
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

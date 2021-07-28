@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
 //        $this->authorize('create');
-        return view('admin.posts.create',compact('categories','status'));
+        return view('admin.posts.create',compact('categories'));
         //
     }
 
@@ -39,6 +39,7 @@ class PostController extends Controller
     {
         $inputs = $request->all();
         $inputs['user_id'] = auth()->user()->id;
+        $inputs['status'] = 0;
         $post = Post::create($inputs);
         if ($file = $request->file('photo_id')){
             $name = $file->getClientOriginalName();

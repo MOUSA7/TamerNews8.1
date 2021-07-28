@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        $roles = ['admin'];
+        $roles = ['admin','user'];
         foreach ($roles as $key=>$value){
             Role::create(['name'=>$value,'permissions'=>json_encode(['users','roles'])]);
         }
