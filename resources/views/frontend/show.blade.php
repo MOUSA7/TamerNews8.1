@@ -96,7 +96,7 @@
                                         <div id="replay">
                                             <div class="media mt-4">
                                                 @if(auth()->user()->photo ?? '')
-                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->path()}}" alt="">
+                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt="">
                                                 @endif
                                                 <div class="media-body">
                                                     @if(auth()->check())
@@ -159,7 +159,7 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{auth()->user()->photo->path()}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
                     $('#content').val('');
                     // window.location.refresh()
                 },
@@ -203,7 +203,7 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->path()}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
+                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
                     $('#body').val('');
                 },
             });

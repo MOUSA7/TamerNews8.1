@@ -117,7 +117,7 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
                     @if(auth()->user()->photo)
-                    <img src="{{Auth::user() ? Auth::user()->photo->path():asset('images/Placeholder.png')}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{Auth::user() ? Auth::user()->photo->file:asset('images/Placeholder.png')}}" class="img-circle elevation-2" alt="User Image">
                     @else
                         <img src="{{asset('images/Placeholder.png')}}" class="img-circle elevation-2" alt="User Image">
                     @endif
