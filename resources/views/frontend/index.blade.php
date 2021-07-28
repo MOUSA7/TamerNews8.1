@@ -11,7 +11,7 @@
             <!-- Slide One - Set the background image for this slide in the line below -->
             @foreach($posts as $key=>$post)
             <div class="carousel-item {{$key == 2 ? 'active' : '' }}">
-                <img height="500px" width="100%" src="{{$post->photo ?$post->photo->path():asset('/frontend/img/1.jpg')}}" alt="">
+                <img height="500px" width="100%" src="{{$post->photo ? asset($post->photo->file):asset('/frontend/img/1.jpg')}}" alt="">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>{{$post->title}}</h3>
                     <p>{{Str::limit($post->content,20)}}</p>
@@ -43,7 +43,7 @@
                 @foreach($cat->posts->take(3) as $pol)
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="{{$pol->photo ?$pol->photo->path():asset('/frontend/img/1.jpg')}}" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="{{$pol->photo ? asset($pol->photo->file):asset('/frontend/img/1.jpg')}}" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title text-center">
                                 <a href="#" style="font-size: 17px">{{Str::limit($pol->title,35)}}</a>

@@ -51,11 +51,11 @@ class UserController extends Controller
         $user = User::create($inputs);
 
         if ($file = $request->file('photo_id')){
-            $name = $file->getClientOriginalName();
-            $path = $file->storeAs('images',$name,'public');
-            $photo = $user->photo()->save(
-            Photo::make(['path'=>$path])
-        );
+            $name = time().$file->getClientOriginalName();
+            $path = $file->move('images',$name);
+            $photo =$user->photo()->save(
+                Photo::make(['path'=>'images/'.$name])
+            );
         $user->photo_id = $photo->id;
         $user->update(['photo_id'=>$user->photo_id]);
         }
@@ -96,15 +96,15 @@ class UserController extends Controller
 
         if ($request->hasFile('photo_id')){
             $file = $request->file('photo_id');
-            $name = $file->getClientOriginalName();
-            $path = $file->storeAs('avatar',$name,'public');
+            $name = time().$file->getClientOriginalName();
+            $path = $file->move('images',$name);
+
             if ($user->photo){
-                unlink(public_path($user->photo ? $user->photo->path():''));
-                Storage::delete($user->photo->path);
+                unlink(public_path().$user->photo->file);
                 $user->photo->path=$path ;
                 $user->photo->save();
             }else{
-                $user->photo()->save(Photo::make(['path'=>$path]));
+                $user->photo()->save(Photo::make(['path'=>'images/'.$name]));
             }
 
         }
@@ -123,6 +123,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        unlink(public_path().$user->photo->file);
         $user->delete();
         return redirect('/admin/users');
     }

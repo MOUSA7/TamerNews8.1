@@ -10,6 +10,7 @@ class Photo extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $uploads = '/';
 
     public function imageable(){
         return $this->morphTo();
@@ -18,4 +19,10 @@ class Photo extends Model
     public function path(){
         return ('/storage/'.$this->path);
     }
+
+    public function getfileAttribute($photo){
+        return $this->uploads.$this->path;
+    }
+
+
 }

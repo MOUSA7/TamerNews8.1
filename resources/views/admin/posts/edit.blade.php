@@ -37,8 +37,8 @@
             </div>
 
             <div class="col-sm-4">
-{{--                <h4>{{$post->photo->id}}</h4>--}}
-                <img src="{{$post->photo ?$post->photo->path():asset('images/Placeholder.png')}}" alt=""
+                <h4>{{$post->photo->file}}</h4>
+                <img src="{{$post->photo ? asset($post->photo->file):asset('images/Placeholder.png')}}" alt=""
                      height="70%" width="100%">
                 <hr>
                 @input(['type'=>'file','name'=>'photo_id'])

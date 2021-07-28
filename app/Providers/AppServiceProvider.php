@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+
         Paginator::useBootstrap();
         Blade::include('components.textarea','textarea');
         Blade::include('components.input','input');

@@ -24,7 +24,7 @@
             <div class="col-lg-8">
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{$post->photo ?$post->photo->path():asset('/frontend/img/1.jpg')}}" alt="">
+                <img class="img-fluid rounded" src="{{$post->photo ? asset($post->photo->file):asset('/frontend/img/1.jpg')}}" alt="">
 
                 <hr>
 

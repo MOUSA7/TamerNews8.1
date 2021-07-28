@@ -42,10 +42,10 @@ class PostController extends Controller
         $inputs['status'] = 0;
         $post = Post::create($inputs);
         if ($file = $request->file('photo_id')){
-            $name = $file->getClientOriginalName();
-            $path = $file->storeAs('images',$name,'public');
+            $name = time().$file->getClientOriginalName();
+            $path = $file->move('images',$name);
             $photo =$post->photo()->save(
-                Photo::make(['path'=>$path])
+                Photo::make(['path'=>'images/'.$name])
             );
             $post->photo_id = $photo->id;
             $post->update(['photo_id'=>$post->photo_id]);
@@ -77,15 +77,15 @@ class PostController extends Controller
         ]);
         if ($request->hasFile('photo_id')){
             $file = $request->file('photo_id');
-            $name = $file->getClientOriginalName();
-            $path = $file->storeAs('images','Post7'.$name,'public');
+            $name = time().$file->getClientOriginalName();
+            $path = $file->move('images',$name);
+
             if ($post->photo){
-                unlink(public_path($post->photo->path()));
-                Storage::delete($post->photo->path);
+                unlink(public_path().$post->photo->file);
                 $post->photo->path=$path ;
                 $post->photo->save();
             }else{
-               $post->photo()->save(Photo::make(['path'=>$path]));
+               $post->photo()->save(Photo::make(['path'=>'images/'.$name]));
             }
 
         }
@@ -99,6 +99,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $this->authorize('delete',$post);
+        unlink(public_path().$post->photo->file);
         $post->delete();
         return redirect()->back();
         //
