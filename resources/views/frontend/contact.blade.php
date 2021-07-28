@@ -58,20 +58,20 @@
         <div class="col-lg-4 mb-4">
           <h3>Contact Details</h3>
           <p>
-              Company Name : {{$settings->address}}
+              Company Name : {{$settings->address ?? ''}}
             <br>Beverly Hills, CA 90210
             <br>
           </p>
           <p>
-            <abbr title="Phone">Phone</abbr>: {{$settings->phone}}
+            <abbr title="Phone">Phone</abbr>: {{$settings->phone ?? ''}}
           </p>
           <p>
             <abbr title="Email">Email</abbr>:
-            <a href="#">{{$settings->email}}
+            <a href="#">{{$settings->email ?? ''}}
             </a>
           </p>
           <p>
-            <abbr title="SocialMedia">Facebook</abbr>: {{$settings->social_media}}
+            <abbr title="SocialMedia">Facebook</abbr>: {{$settings->social_media ?? ''}}
           </p>
         </div>
       </div>
