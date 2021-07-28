@@ -36,7 +36,7 @@
                 @endforeach
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="{{route('home.contact')}}">Contact</a>
                 </li>
 
             </ul>
@@ -61,7 +61,8 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; TechnoGhada 2021</p>
+        <p class="m-0 text-center text-white">Copyright &copy; {{$settings->address}}</p>
+        <p class="m-0 text-center text-white">Phone : {{$settings->phone}}</p>
     </div>
     <!-- /.container -->
 </footer>

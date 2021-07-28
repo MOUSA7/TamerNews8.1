@@ -31,7 +31,7 @@ class ReplayController extends Controller
 //        dd($request->body);
 
         $replay = $comment->replays()->create([
-            'body' => $request->input('body') ? \request()->input('body') : 'body',
+            'body' => $request->input('body'),
             'user_id'=> auth()->user()->id,
             'comment_id'=> $request->comment_id,
             'is_active' => 1

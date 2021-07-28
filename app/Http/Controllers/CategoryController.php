@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class CategoryController extends Controller
         return view('admin.categories.create',compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $cat = new Category();
         $cat->name = $request->name;
@@ -45,7 +46,7 @@ class CategoryController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $cat = Category::findOrFail($id);
         $cat->name = $request->name;

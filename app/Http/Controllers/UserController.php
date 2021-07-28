@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Photo;
 use App\Models\Role;
 use App\Models\User;
@@ -34,7 +35,7 @@ class UserController extends Controller
         return view('admin.users.create',compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $inputs = $request->all();
         if (trim($request->password) == ''){
@@ -83,7 +84,7 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
 

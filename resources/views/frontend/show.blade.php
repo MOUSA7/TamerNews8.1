@@ -24,7 +24,7 @@
             <div class="col-lg-8">
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{$post->photo ? asset($post->photo->file):asset('/frontend/img/1.jpg')}}" alt="">
+                <img class="img-fluid rounded" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">
 
                 <hr>
 
@@ -62,7 +62,7 @@
                     @foreach($post->comments as $comment)
                         <div class="media mb-4">
                             @if(auth()->user()->photo ?? '')
-                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->path()}}" alt="">
+                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">
                             @endif
                                 <div class="media-body">
                                 <h5 class="mt-0">{{$comment->user ?$comment->user->name:''}}</h5>
@@ -96,7 +96,7 @@
                                         <div id="replay">
                                             <div class="media mt-4">
                                                 @if(auth()->user()->photo ?? '')
-                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt="">
+                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{url(auth()->user()->photo->file)}}" alt="">
                                                 @endif
                                                 <div class="media-body">
                                                     @if(auth()->check())
@@ -159,7 +159,7 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
                     $('#content').val('');
                     // window.location.refresh()
                 },
@@ -203,7 +203,7 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{auth()->user()->photo->file}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
+                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
                     $('#body').val('');
                 },
             });

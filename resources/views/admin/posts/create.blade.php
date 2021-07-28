@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-sm-4">
-                <img src="https://knetic.org.uk/wp-content/uploads/2020/07/Pcture-Placeholder-1024x684.png" alt=""
+                <img src="{{url(asset('images/Placeholder.png'))}}" alt=""
                      height="70%" width="100%">
                 <hr>
                 @input(['type'=>'file','name'=>'photo_id'])

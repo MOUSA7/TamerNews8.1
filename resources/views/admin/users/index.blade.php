@@ -44,7 +44,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <img src="{{$user->photo?$user->photo->file :asset('images/Placeholder.png')}}" alt=""
+                    <img src="{{$user->photo?url($user->photo->file) :url(asset('images/Placeholder.png'))}}" alt=""
                          height="45px" width="50px">
                 </td>
                 <td>{{$user->role->name}}</td>

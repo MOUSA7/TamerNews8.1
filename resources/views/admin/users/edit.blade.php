@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <img src="{{$user->photo?$user->photo->file :asset('images/Placeholder.png')}}" alt=""
+                <img src="{{$user->photo?url($user->photo->file) :url(asset('images/Placeholder.png'))}}" alt=""
                      height="70%" width="100%">
                 <hr>
                 @input(['type'=>'file','name'=>'photo_id'])

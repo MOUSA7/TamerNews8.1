@@ -96,6 +96,8 @@ Route::prefix('/')->name('home.')->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('index');
     Route::get('/show/{id}',[\App\Http\Controllers\FrontendController::class,'show'])->name('show');
     Route::get('/category/{id}',[\App\Http\Controllers\FrontendController::class,'PostsCategory'])->name('category');
+    Route::get('contact',[\App\Http\Controllers\FrontendController::class,'contact'])->name('contact');
+
 
 });
 Route::get('logout', [App\Http\Controllers\HomeController::class, 'logout']);

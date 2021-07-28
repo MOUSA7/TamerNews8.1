@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SettingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -17,15 +18,17 @@ class SettingController extends Controller
         return view('admin.settings.create');
     }
 
-    public function store(Request $request){
+    public function store(SettingRequest $request){
 
        $data = new Setting();
             $data->phone=$request->phone;
             $data->email=$request->email;
             $data->address=$request->address;
+            $data->FullName=$request->FullName;
+            $data->message=$request->message;
             $data->social_media=$request->social_media;
             $data->save();
-            return redirect('admin/settings');
+            return redirect('/');
     }
 
     public function edit($id){
@@ -33,7 +36,7 @@ class SettingController extends Controller
         return view('admin.settings.edit',compact('setting'));
     }
 
-    public function update(Request $request,$id){
+    public function update(SettingRequest $request,$id){
         $setting = Setting::findOrFail($id);
 
         $setting->phone=$request->phone;

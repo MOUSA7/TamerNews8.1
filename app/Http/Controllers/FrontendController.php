@@ -19,5 +19,9 @@ class FrontendController extends Controller
 
         return view('frontend.category_posts',compact('category'));
     }
+
+    public function contact(){
+        return view('frontend.contact');
+    }
     //
 }

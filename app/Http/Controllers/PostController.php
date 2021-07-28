@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Photo;
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +22,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->paginate(8);
-
         return view('admin.posts.index',compact('posts'));
         //
     }
@@ -35,7 +36,7 @@ class PostController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $inputs = $request->all();
         $inputs['user_id'] = auth()->user()->id;
@@ -66,7 +67,7 @@ class PostController extends Controller
         return view('admin.posts.edit',compact('post','categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->update([
