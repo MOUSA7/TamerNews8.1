@@ -52,7 +52,7 @@ class UserController extends Controller
         $user = User::create($inputs);
 
         if ($file = $request->file('photo_id')){
-            $name = time().$file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
             $photo =$user->photo()->save(
                 Photo::make(['path'=>'images/'.$name])
@@ -97,7 +97,7 @@ class UserController extends Controller
 
         if ($request->hasFile('photo_id')){
             $file = $request->file('photo_id');
-            $name = time().$file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
 
             if ($user->photo){

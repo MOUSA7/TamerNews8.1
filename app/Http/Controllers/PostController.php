@@ -43,7 +43,7 @@ class PostController extends Controller
         $inputs['status'] = 0;
         $post = Post::create($inputs);
         if ($file = $request->file('photo_id')){
-            $name = time().$file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
             $photo =$post->photo()->save(
                 Photo::make(['path'=>'images/'.$name])
@@ -78,9 +78,8 @@ class PostController extends Controller
         ]);
         if ($request->hasFile('photo_id')){
             $file = $request->file('photo_id');
-            $name = time().$file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
-
             if ($post->photo){
                 unlink(public_path().$post->photo->file);
                 $post->photo->path=$path ;
