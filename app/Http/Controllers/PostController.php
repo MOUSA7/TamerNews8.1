@@ -80,13 +80,14 @@ class PostController extends Controller
             $file = $request->file('photo_id');
             $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
-            if ($post->photo){
-                unlink(public_path().$post->photo->file);
-                $post->photo->path=$path ;
-                $post->photo->save();
-            }else{
-               $post->photo()->save(Photo::make(['path'=>'images/'.$name]));
-            }
+            $post->photo()->save(Photo::make(['path'=>'images/'.$name]));
+//            if ($post->photo){
+//                unlink(public_path().$post->photo->file);
+//                $post->photo->path=$path ;
+//                $post->photo->save();
+//            }else{
+//               $post->photo()->save(Photo::make(['path'=>'images/'.$name]));
+//            }
 
         }
         $post->save();
