@@ -101,7 +101,7 @@ class UserController extends Controller
             $path = $file->move('images',$name);
 
             if ($user->photo){
-                unlink(public_path().$user->photo->file);
+                unlink(public_path().$user->photo->file ?? '');
                 $user->photo->path=$path ;
                 $user->photo->save();
             }else{
@@ -124,7 +124,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        unlink(public_path().$user->photo->file);
         $user->delete();
         return redirect('/admin/users');
     }

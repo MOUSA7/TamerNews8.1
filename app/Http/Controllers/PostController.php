@@ -99,7 +99,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $this->authorize('delete',$post);
-        unlink(public_path().$post->photo->file);
+//        unlink(public_path().$post->photo->file);
         $post->delete();
         return redirect()->back();
         //
