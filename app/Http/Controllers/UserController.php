@@ -99,14 +99,14 @@ class UserController extends Controller
             $file = $request->file('photo_id');
             $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
-            $user->photo()->save(Photo::make(['path'=>'images/'.$name]));
-//            if ($user->photo){
+
+            if ($user->photo){
 //                unlink(public_path().$user->photo->file ?? '');
-//                $user->photo->path=$path ;
-//                $user->photo->save();
-//            }else{
-//                $user->photo()->save(Photo::make(['path'=>'images/'.$name]));
-//            }
+                $user->photo->path=$path ;
+                $user->photo->save();
+            }else{
+                $user->photo()->save(Photo::make(['path'=>'images/'.$name]));
+            }
 
         }
         $user->name = $request->name;
