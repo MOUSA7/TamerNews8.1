@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-sm-4">
-                <h4>{{url($post->photo->file)}}</h4>
+{{--                <h4>{{url($post->photo->file)}}</h4>--}}
                 <img src="{{$post->photo ? url(asset($post->photo->file)):url(asset('images/Placeholder.png'))}}" alt=""
                      height="70%" width="100%">
                 <hr>
