@@ -117,9 +117,12 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
                     @if(auth()->user()->photo)
-                    <img src="{{Auth::user() ? url(Auth::user()->photo->file):url(asset('images/Placeholder.png'))}}" class="img-circle elevation-2" alt="User Image">
+{{--                    <img src="{{Auth::user() ? url(Auth::user()->photo->file):url(asset('images/Placeholder.png'))}}" class="img-circle elevation-2" alt="User Image">--}}
+                        <img src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" class="img-circle elevation-2" alt="User Image">
                     @else
-                        <img src="{{url(asset('images/Placeholder.png'))}}" class="img-circle elevation-2" alt="User Image">
+{{--                        <img src="{{url(asset('images/Placeholder.png'))}}" class="img-circle elevation-2" alt="User Image">--}}
+                        <img src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" class="img-circle elevation-2" alt="User Image">
+
                     @endif
                 </div>
                 <div class="info">

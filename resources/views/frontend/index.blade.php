@@ -11,7 +11,8 @@
             <!-- Slide One - Set the background image for this slide in the line below -->
             @foreach($posts as $key=>$post)
             <div class="carousel-item {{$key == 2 ? 'active' : '' }}">
-                <img height="500px" width="100%" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">
+{{--                <img height="500px" width="100%" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">--}}
+                <img src="https://www.lutheranworld.org/sites/default/files/styles/news_item/public/jerusalem-statement_0.jpg?itok=pt0tMKfL" width="100%" class="img-circle elevation-2" alt="User Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>{{$post->title}}</h3>
                     <p>{{Str::limit($post->content,20)}}</p>
@@ -43,7 +44,10 @@
                 @foreach($cat->posts->take(3) as $pol)
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="{{$pol->photo ? url(asset($pol->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt=""></a>
+                        <a href="#">
+{{--                            <img class="card-img-top" src="{{$pol->photo ? url(asset($pol->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">--}}
+                            <img class="card-img-top" src="https://overseas.huji.ac.il/wp-content/uploads/2017/11/Mostafa_Jerusalem-1024x640.jpg" alt="">
+                        </a>
                         <div class="card-body">
                             <h4 class="card-title text-center">
                                 <a href="#" style="font-size: 17px">{{Str::limit($pol->title,35)}}</a>
