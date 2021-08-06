@@ -46,7 +46,7 @@
                     <div class="card h-100">
                         <a href="#">
 {{--                            <img class="card-img-top" src="{{$pol->photo ? url(asset($pol->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">--}}
-                            <img class="card-img-top" src="https://cdn.britannica.com/29/191329-050-59F4649D/Haifa-Israel-Mount-Carmel.jpg" alt="">
+                            <img class="card-img-top" src="https://overseas.huji.ac.il/wp-content/uploads/2017/11/Mostafa_Jerusalem-1024x640.jpg" alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title text-center">
