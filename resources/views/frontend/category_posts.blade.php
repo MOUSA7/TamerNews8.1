@@ -22,6 +22,7 @@
             <div class="col-md-7">
                 <a href="newsdetailes.html">
                     <img class="img-fluid full-width h-200 rounded mb-3 mb-md-0" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">
+                    <img class="img-fluid full-width h-200 rounded mb-3 mb-md-0" src="" alt="">
                 </a>
             </div>
             <div class="col-md-5">
