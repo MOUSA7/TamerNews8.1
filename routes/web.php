@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+$post = Post::all();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
