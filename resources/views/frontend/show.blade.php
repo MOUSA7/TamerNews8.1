@@ -63,7 +63,7 @@
                         <div class="media mb-4">
                             @if(auth()->user()->photo ?? '')
 {{--                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">--}}
-                                <img src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" class="img-circle elevation-2" alt="User Image">
+                                <img class="d-flex  rounded-circle" height="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg"  alt="User Image">
 
                             @endif
                                 <div class="media-body">
