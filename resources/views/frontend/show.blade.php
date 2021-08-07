@@ -62,7 +62,9 @@
                     @foreach($post->comments as $comment)
                         <div class="media mb-4">
                             @if(auth()->user()->photo ?? '')
-                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">
+{{--                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">--}}
+                                <img src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" class="img-circle elevation-2" alt="User Image">
+
                             @endif
                                 <div class="media-body">
                                 <h5 class="mt-0">{{$comment->user ?$comment->user->name:''}}</h5>
@@ -96,7 +98,8 @@
                                         <div id="replay">
                                             <div class="media mt-4">
                                                 @if(auth()->user()->photo ?? '')
-                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{url(auth()->user()->photo->file)}}" alt="">
+{{--                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{url(auth()->user()->photo->file)}}" alt="">--}}
+                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt="">
                                                 @endif
                                                 <div class="media-body">
                                                     @if(auth()->check())
@@ -159,7 +162,9 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    {{--$('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');--}}
+                    $('#replay').append('<div class="media mb-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+
                     $('#content').val('');
                     // window.location.refresh()
                 },
