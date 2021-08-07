@@ -208,7 +208,9 @@
                 },
                 success:function (data){
                     console.log(data)
-                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
+                    {{--$('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');--}}
+                    $('#commentable').append('<div class="media mt-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+
                     $('#body').val('');
                 },
             });
