@@ -15,7 +15,7 @@
                 <img src="https://www.lutheranworld.org/sites/default/files/styles/news_item/public/jerusalem-statement_0.jpg?itok=pt0tMKfL" width="100%" class="img-circle elevation-2" alt="User Image">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>{{$post->title}}</h3>
-                    <p>{!! Str::limit($pol->content,35) !!}</p>
+                    <p>{{Str::limit($post->content,20)}}</p>
                 </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
@@ -52,7 +52,7 @@
                             <h4 class="card-title text-center">
                                 <a href="#" style="font-size: 17px">{{Str::limit($pol->title,35)}}</a>
                             </h4>
-                            <p class="card-text text-center">{!! Str::limit($pol->content,80) !!}</p>
+                            <p class="card-text text-center">{{Str::limit($pol->content,80)}}</p>
                         </div>
                         <div class="card-footer">
                             <a href="{{route('home.show',$pol->id)}}" class="btn btn-primary">Learn More</a>
