@@ -28,6 +28,7 @@
                     @input(['type'=>'text','title'=>'عنوان الخبر :','name'=>'title','class'=>'form-control'])
                     @textarea(['title'=>'المحتوى :','name'=>'content','class'=>'form-control'])
                     @select(['name'=>'category_id','class'=>'form-control','elements'=>$categories])
+                    @input(['type'=>'checkbox','name'=>'slider','title'=>'السلايدر :','class'=>'form-check d-inline','value'=>1])
                     @input(['type'=>'submit','value'=>'Save','class'=>'btn btn-primary'])
                 </div>
             </div>
@@ -36,7 +37,7 @@
                 <img src="{{url(asset('images/Placeholder.png'))}}" alt=""
                      height="70%" width="100%">
                 <hr>
-                @input(['type'=>'file','name'=>'photo_id'])
+                @input(['type'=>'file','name'=>'photo'])
             </div>
         </div>
     </x-form>

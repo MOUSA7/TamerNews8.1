@@ -16,17 +16,21 @@ class PostRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+
     public function rules()
     {
+        if (request()->edit_id){
+            return [
+                'title' => 'required|min:5',
+                'content'=> 'required',
+//                'slider'=>'required'
+            ];
+        }
         return [
             'title' => 'required|min:5',
             'content'=> 'required',
-            'photo_id'=> 'required'
+            'photo'=> 'required',
+//            'slider'=>'required'
         ];
     }
 
@@ -36,7 +40,7 @@ class PostRequest extends FormRequest
             'title.required' => 'حقل العنوان مطلوب. ',
             'title.min' => 'يجب ألا يقل العنوان عن 5 أحرف. ',
             'content.required'=>'حقل المحتوى مطلوب.',
-            'photo_id.required'=>'حقل لصورة مطلوب.'
+            'photo.required'=>'حقل لصورة مطلوب.'
         ];
     }
 }

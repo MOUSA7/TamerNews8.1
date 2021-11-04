@@ -24,7 +24,7 @@
             <div class="col-lg-8">
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">
+                <img class="img-fluid rounded" src="{{$post->Photo ? url(asset($post->Photo->path)):url(asset('/frontend/img/1.jpg'))}}" alt="">
 
                 <hr>
 
@@ -62,8 +62,8 @@
                     @foreach($post->comments as $comment)
                         <div class="media mb-4">
                             @if(auth()->user()->photo ?? '')
-{{--                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">--}}
-                                <img class="d-flex  rounded-circle" height="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg"  alt="User Image">
+                            <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt="">
+{{--                                <img class="d-flex  rounded-circle" height="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg"  alt="User Image">--}}
 
                             @endif
                                 <div class="media-body">
@@ -98,8 +98,8 @@
                                         <div id="replay">
                                             <div class="media mt-4">
                                                 @if(auth()->user()->photo ?? '')
-{{--                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{url(auth()->user()->photo->file)}}" alt="">--}}
-                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt="">
+                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="{{url(auth()->user()->photo->file)}}" alt="">
+{{--                                                    <img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt="">--}}
                                                 @endif
                                                 <div class="media-body">
                                                     @if(auth()->check())
@@ -126,9 +126,21 @@
 
                 <!-- Side Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Side Widget</h5>
+                    <h5 class="card-header">Seem News</h5>
                     <div class="card-body">
-                        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                        <div class="row">
+                            <?php $posts = \App\Models\Post::where('category_id',$post->category->id)->get() ?>
+                            @foreach($posts as $value)
+                            <div class="col-7">
+                                <a href="{{route('home.show',$value->id)}}" style="text-decoration-line: none !important; font-size: 17px">{{Str::limit($value->title,30)}}</a>
+                                <hr>
+                            </div>
+
+                                <div class="col-5">
+                                    <img src="{{asset($value->Photo->path??'')}}" height="60px" width="80px" alt="">
+                                </div>
+                                @endforeach
+                        </div>
                     </div>
                 </div>
 
@@ -162,8 +174,8 @@
                 },
                 success:function (data){
                     console.log(data)
-                    {{--$('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');--}}
-                    $('#replay').append('<div class="media mb-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    $('#replay').append('<div class="media mb-4"> <img class="d-flex rounded-circle"  height="50px" width="50px" src="{{url(asset('/images/Placeholder.png'))}}" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    // $('#replay').append('<div class="media mb-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
 
                     $('#content').val('');
                     // window.location.refresh()
@@ -208,8 +220,8 @@
                 },
                 success:function (data){
                     console.log(data)
-                    {{--$('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{Auth::user()->photo ? url(Auth::user()->photo->file):url(asset('/images/Placeholder.png'))}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');--}}
-                    $('#commentable').append('<div class="media mt-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
+                    $('#commentable').append('<div class="media mt-4"><img class="d-flex rounded-circle" height="50px" width="50px" src="{{url(asset('/images/Placeholder.png'))}}" alt=""><div class="media-body"><h5 class="mt-0">'+user+'</h5>'+body+'</div></div>');
+                    // $('#commentable').append('<div class="media mt-4"><img class="d-flex  rounded-circle" height="50px" width="50px" src="https://www.theportlandclinic.com/wp-content/uploads/2019/07/Person-Curtis_4x5-e1564616444404-300x300.jpg" alt=""> <div class="media-body"> <h5 class="mt-0">'+user+' </h5>'+content+'</div> </div>');
 
                     $('#body').val('');
                 },

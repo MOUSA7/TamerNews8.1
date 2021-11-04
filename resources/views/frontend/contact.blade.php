@@ -82,7 +82,7 @@
       <!-- /.row -->
 
     </div>
-    <!-- /.container -->
+    <!-- /.container -->img
 
 
 @endsection    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->

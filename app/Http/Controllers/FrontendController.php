@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -20,7 +22,10 @@ class FrontendController extends Controller
         return view('frontend.category_posts',compact('category'));
     }
 
+
+
     public function contact(){
+//        dd('asd');
         return view('frontend.contact');
     }
     //

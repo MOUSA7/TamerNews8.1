@@ -7,12 +7,13 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
             @foreach($posts as $key=>$post)
             <div class="carousel-item {{$key == 2 ? 'active' : '' }}">
-{{--                <img height="500px" width="100%" src="{{$post->photo ? url(asset($post->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">--}}
-                <img src="https://www.lutheranworld.org/sites/default/files/styles/news_item/public/jerusalem-statement_0.jpg?itok=pt0tMKfL" width="100%" class="img-circle elevation-2" alt="User Image">
+                <img height="500px" width="100%" src="{{$post->Photo ? url(asset($post->Photo->path)):url(asset('/frontend/img/1.jpg'))}}" alt="">
+{{--                <img src="https://www.lutheranworld.org/sites/default/files/styles/news_item/public/jerusalem-statement_0.jpg?itok=pt0tMKfL" width="100%" class="img-circle elevation-2" alt="User Image">--}}
                 <div class="carousel-caption d-none d-md-block">
                     <h3>{{$post->title}}</h3>
                     <p>{{Str::limit($post->content,20)}}</p>
@@ -45,16 +46,16 @@
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <a href="#">
-{{--                            <img class="card-img-top" src="{{$pol->photo ? url(asset($pol->photo->file)):url(asset('/frontend/img/1.jpg'))}}" alt="">--}}
-                            <img class="card-img-top" src="https://overseas.huji.ac.il/wp-content/uploads/2017/11/Mostafa_Jerusalem-1024x640.jpg" alt="">
+                            <img class="card-img-top" src="{{$pol->Photo ? url(asset($pol->Photo->path)):url(asset('/frontend/img/1.jpg'))}}" alt="">
+{{--                            <img class="card-img-top" src="https://overseas.huji.ac.il/wp-content/uploads/2017/11/Mostafa_Jerusalem-1024x640.jpg" alt="">--}}
                         </a>
                         <div class="card-body">
                             <h4 class="card-title text-center">
-                                <a href="#" style="font-size: 17px">{{Str::limit($pol->title,35)}}</a>
+                                <a href="{{route('home.show',$pol->id)}}" style="font-size: 17px">{{Str::limit($pol->title,35)}}</a>
                             </h4>
                             <p class="card-text text-center">{{Str::limit($pol->content,80)}}</p>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer text-center">
                             <a href="{{route('home.show',$pol->id)}}" class="btn btn-primary">Learn More</a>
                         </div>
                     </div>

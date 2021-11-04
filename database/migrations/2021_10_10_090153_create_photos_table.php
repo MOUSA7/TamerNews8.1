@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPhotoIDInUsersTable extends Migration
+class CreatePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddPhotoIDInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('photo_id')->nullable();
+        Schema::create('photos', function (Blueprint $table) {
+            $table->id();
+            $table->string('path')->nullable();
+            $table->morphs('imageable');
+            $table->timestamps();
         });
     }
 
@@ -26,7 +28,6 @@ class AddPhotoIDInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-        });
+        Schema::dropIfExists('photos');
     }
 }

@@ -24,10 +24,12 @@ class CommentController extends Controller
 
     public function store(Post $post,CommentRequest $request)
     {
+
         $data = $post->comments()->create([
             'content' => $request->input('content'),
             'user_id' => auth()->user()->id
         ]);
+        dd($data);
 
         return response()->json([
             'data'=>$data,

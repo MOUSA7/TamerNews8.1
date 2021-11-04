@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -34,8 +35,18 @@ class HomeController extends Controller
         return view('frontend.index');
     }
 
+    public function language($lang){
+        $current = App::getLocale();
+        $new = $current == 'ar'?'en':'ar';
+        \session()->put('user_lang',$new);
+
+        return redirect()->back();
+    }
+
     public function logout(){
          Auth::logout();
         return redirect('/login');
     }
+
+
 }

@@ -15,27 +15,21 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('user_id');
-            $table->foreignId('category_id');
-            $table->string('status');
+            $table->string('title')->nullable();
+            $table->text('content')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('category_id')->nullable();
+            $table->string('status')->nullable();
+            $table->string('slider')->nullable();
+            $table->string('photo')->nullable();
             $table->softDeletes();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
-
             $table->timestamps();
         });
+
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('posts');
-        Schema::dropIfExists('users');
     }
 }

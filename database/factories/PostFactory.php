@@ -17,7 +17,7 @@ class PostFactory extends Factory
             'title'=>$this->faker->sentence(20,true),
             'content'=>$this->faker->paragraph(rand(15,50)),
             'category_id'=>rand(1,4),
-            'photo_id' => rand(1,6),
+            'slider' => rand(0,1),
             'user_id' => 1,
             'status' => rand(0,1)
             //

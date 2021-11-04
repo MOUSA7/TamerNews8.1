@@ -42,16 +42,17 @@ class PostController extends Controller
         $inputs['user_id'] = auth()->user()->id;
         $inputs['status'] = 0;
         $post = Post::create($inputs);
-        if ($file = $request->file('photo_id')){
-            $name = $file->getClientOriginalName();
-            $path = $file->move('images',$name);
-            $photo =$post->photo()->save(
+        if ($file = $request->hasFile('photo')){
+            $image = $request->file('photo');
+            $name = $image->getClientOriginalName();
+            $path = $image->move('images',$name);
+            $photo =$post->Photo()->save(
                 Photo::make(['path'=>'images/'.$name])
             );
-            $post->photo_id = $photo->id;
-            $post->update(['photo_id'=>$post->photo_id]);
+            $post->photo = $photo->id;
+            $post->update(['photo'=>$post->photo]);
         }
-        return redirect('admin/posts');
+        return redirect(route('admin.posts.index'));
     }
     public function show($id)
     {
@@ -73,17 +74,18 @@ class PostController extends Controller
         $post->update([
            'title'=>\request()->title,
            'content'=>\request()->input('content'),
+            'slider' => \request()->slider,
             'category_id'=>\request()->category_id
 
         ]);
-        if ($request->hasFile('photo_id')){
-            $file = $request->file('photo_id');
+        if ($request->hasFile('photo')){
+            $file = $request->file('photo');
             $name = $file->getClientOriginalName();
             $path = $file->move('images',$name);
             if ($post->photo){
 //                unlink(public_path().$post->photo->file);
-                $post->photo->path=$path ;
-                $post->photo->save();
+                $post->Photo->path=$path ;
+                $post->Photo->save();
             }else{
                $post->photo()->save(Photo::make(['path'=>'images/'.$name]));
             }

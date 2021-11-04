@@ -15,13 +15,8 @@ class CreateReplaysTable extends Migration
     {
         Schema::create('replays', function (Blueprint $table) {
             $table->id();
-            $table->text('body');
-            $table->foreignId('user_id');
-            $table->foreignId('comment_id');
-            $table->string('is_active')->default(null);
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->text('body')->nullable();
+            $table->string('is_active')->nullable();
             $table->timestamps();
         });
     }

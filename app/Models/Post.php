@@ -10,14 +10,13 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
     protected $guarded = [];
 
     public function comments(){
         return $this->morphMany(Comment::class,'commentable');
 }
 
-    public function photo(){
+    public function Photo(){
         return $this->morphOne(Photo::class,'imageable');
     }
 

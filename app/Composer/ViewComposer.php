@@ -11,9 +11,9 @@ use Illuminate\View\View;
 class ViewComposer{
 
     public function compose(View $view){
+//        dd('Done');
         $categories = Category::all();
-
-        $posts = Post::latest()->take(4)->get();
+        $posts = Post::where('slider',1)->take(4)->where('deleted_at',null)->get();
         $settings = Setting::first();
 
         $view->with(['categories'=>$categories,

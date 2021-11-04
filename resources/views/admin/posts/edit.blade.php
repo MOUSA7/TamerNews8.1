@@ -26,9 +26,11 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="card-body">
+                    <input type="hidden" name="edit_id" value="{{$post->id}}">
                     @input(['type'=>'text','title'=>'عنوان الخبر :','value'=>$post->title,'name'=>'title','class'=>'form-control'])
                     @textarea(['title'=>'المحتوى :','value'=>$post->content,'name'=>'content','class'=>'form-control'])
                     @select(['name'=>'category_id','class'=>'form-control','items'=>$categories,'CategoryId'=>$post->category_id])
+                    @input(['type'=>'checkbox','name'=>'slider','title'=>'سلايدر :','class'=>'form-check d-inline','value'=>$post->slider ==1?'checked':0])
                     @input(['type'=>'submit','value'=>'Save','class'=>'btn btn-primary'])
 {{--                    @error('name')--}}
 {{--                    <p class="text-danger">{{$message}}</p>--}}
@@ -37,11 +39,11 @@
             </div>
 
             <div class="col-sm-4">
-{{--                <h4>{{url($post->photo->file)}}</h4>--}}
-                <img src="{{$post->photo ? url(asset($post->photo->file)):url(asset('images/Placeholder.png'))}}" alt=""
+{{--                <h4>{{url($post->Photo->path)}}</h4>--}}
+                <img src="{{$post->Photo ? url(asset($post->Photo->path)):url(asset('images/Placeholder.png'))}}" alt=""
                      height="70%" width="100%">
                 <hr>
-                @input(['type'=>'file','name'=>'photo_id'])
+                @input(['type'=>'file','name'=>'photo'])
             </div>
         </div>
     </x-form>
